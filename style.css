@@ -1,0 +1,55 @@
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background: #efebe4;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  color: #2b2925;
+}
+
+#viewport {
+  position: fixed;
+  inset: 0;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+  background-image: radial-gradient(#cfc8bc 1.2px, transparent 1.2px);
+  background-size: 28px 28px;
+}
+
+#viewport.panning { cursor: grabbing; }
+
+#world {
+  position: absolute;
+  left: 0;
+  top: 0;
+  transform-origin: 0 0;
+}
+
+/* Each widget sits in a "card". The card's border area is the grip for moving
+   it around; everything inside belongs to the widget. */
+.card {
+  position: absolute;
+  padding: 12px;
+  background: #fffdf9;
+  border-radius: 14px;
+  box-shadow: 0 1px 2px rgba(0,0,0,.08), 0 6px 18px rgba(0,0,0,.08);
+  cursor: move;
+  transition: box-shadow .15s;
+}
+
+.card.lifted {
+  box-shadow: 0 2px 4px rgba(0,0,0,.1), 0 16px 40px rgba(0,0,0,.18);
+}
+
+.card > .body {
+  width: 100%;
+  height: 100%;
+  cursor: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 6px;
+}
